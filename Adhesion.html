@@ -98,12 +98,13 @@ var LZString={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz01234
 		<div id="init-lacking"><p>Browser lacks capabilities required to play.</p><p>Upgrade or switch to another browser.</p></div>
 		<div id="init-loading"><div>Loading&hellip;</div></div>
 	</div>
-	<tw-storydata name="Adhesion" startnode="1" creator="Twine" creator-version="2.4.1" format="SugarCube" format-version="2.36.1" ifid="CE691D63-F267-4103-8A77-442A4A3D9192" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Story Intro" tags="" position="775,425" size="100,100">It was so sudden at first. One day people just started to vanish. No warning, no reason, just gone. Millions of people. Those of us who were left had to try and pick up the pieces, but our peace was short lived. Whatever took everyone was still here and it would take others every now and then. Now we live in a constant fear that we will be ripped away from what little we have left.
+	<tw-storydata name="Adhesion" startnode="1" creator="Twine" creator-version="2.4.1" format="SugarCube" format-version="2.36.1" ifid="CE691D63-F267-4103-8A77-442A4A3D9192" options="" tags="" zoom="1" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Story Intro" tags="" position="775,425" size="100,100">It was so sudden at first. One day people just started to vanish. No warning, no reason, just gone. Millions of people. This event became know over time as the Great Yoink. Those of us who were left had to try and pick up the pieces, but our peace was short lived. Whatever took everyone was still here and it would take others every now and then. Now we live in a constant fear that we will be ripped away from what little we have left.
 
 [[But...|Intro 2]]</tw-passagedata><tw-passagedata pid="2" name="Intro 2" tags="" position="900,425" size="100,100">But this isn&#39;t a story about despair. This is a story about hope, at least I think it is. What choices will you make? What will this story mean to you? I can&#39;t wait to find out.
 
-[[It&#39;s time to wake up.|Character Intro]]</tw-passagedata><tw-passagedata pid="3" name="Character Intro" tags="" position="1025,425" size="100,100">The eight of you are in different states of conciousness as the sun begins to peak into your window. As all of you are starting to get moving, you hear a people argueing outside. Someone rushes into the room, &quot;Wake up! No one can find Lupis! People think he may have been taken. When you&#39;re ready go to the disscussion room!&quot;
+[[It&#39;s time to wake up.|Character Intro]]</tw-passagedata><tw-passagedata pid="3" name="Character Intro" tags="" position="1025,425" size="100,100">You are part of a group called the Adhesion. Your purpose is to take people from all walks of life and make an advising body. Your normal duties are typically going around your town of New Yoink and settling disputes. 
 
+The eight of you are in different states of conciousness as the sun begins to peak into your window. As all of you are starting to get moving, you hear a people argueing outside. Someone rushes into the room, &quot;Wake up! No one can find Lupis! People think he may have been taken. When you&#39;re ready go to the disscussion room!&quot;
 
 [[Time to choose who will be in your party.|Party Select]] 
 &lt;&lt;set $numPartyMembers to 0&gt;&gt;
@@ -130,7 +131,7 @@ Party members: $numPartyMembers / 4
 Age: 56
 Gender: Non-Binary
 Job: Cook
-Faction Connections:
+Faction Connections: Theorists
 Description:
 &lt;&lt;if $numPartyMembers &lt; 4&gt;&gt;&lt;&lt;if $cookOnTeam is false&gt;&gt;[[Bring them along.|Cook Confirm]]&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $cookOnTeam is true&gt;&gt;[[Leave them here.|Cook Reject]]&lt;&lt;/if&gt;&gt;
@@ -138,7 +139,7 @@ Description:
 Age: 21
 Gender: Female
 Job: Gardener
-Faction Connections:
+Faction Connections: Rebuilders
 Description:
 &lt;&lt;if $numPartyMembers &lt; 4&gt;&gt;&lt;&lt;if $gardenerOnTeam is false&gt;&gt;[[Bring them along.|Gardener Confirm]]&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $gardenerOnTeam is true&gt;&gt;[[Leave them here.|Gardener Reject]]&lt;&lt;/if&gt;&gt;
@@ -146,7 +147,7 @@ Description:
 Age: 24
 Gender: Male
 Job: Life Guard
-Faction Connections:
+Faction Connections: Theorists
 Description:
 &lt;&lt;if $numPartyMembers &lt; 4&gt;&gt;&lt;&lt;if $lifeGuardOnTeam is false&gt;&gt;[[Bring them along.|Life Guard Confirm]]&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $lifeGuardOnTeam is true&gt;&gt;[[Leave them here.|Life Guard Reject]]&lt;&lt;/if&gt;&gt;
@@ -154,7 +155,7 @@ Description:
 Age: 45
 Gender: Female
 Job: Photographer
-Faction Connections:
+Faction Connections: Muskrats
 Description:
 &lt;&lt;if $numPartyMembers &lt; 4&gt;&gt;&lt;&lt;if $photographerOnTeam is false&gt;&gt;[[Bring them along.|Photographer Confirm]]&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $photographerOnTeam is true&gt;&gt;[[Leave them here.|Photographer Reject]]&lt;&lt;/if&gt;&gt;
@@ -162,7 +163,7 @@ Description:
 Age: 32
 Gender: Female
 Job: Librarian
-Faction Connections:
+Faction Connections: Rebuilders
 Description:
 &lt;&lt;if $numPartyMembers &lt; 4&gt;&gt;&lt;&lt;if $librarianOnTeam is false&gt;&gt;[[Bring them along.|Librarian Confirm]]&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $librarianOnTeam is true&gt;&gt;[[Leave them here.|Librarian Reject]]&lt;&lt;/if&gt;&gt;
@@ -170,7 +171,7 @@ Description:
 Age: 31
 Gender: Male
 Job: Firefighter
-Faction Connections:
+Faction Connections: Muskrats
 Description:
 &lt;&lt;if $numPartyMembers &lt; 4&gt;&gt;&lt;&lt;if $firefighterOnTeam is false&gt;&gt;[[Bring them along.|Firefighter Confirm]]&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $firefighterOnTeam is true&gt;&gt;[[Leave them here.|Firefighter Reject]]&lt;&lt;/if&gt;&gt;
@@ -178,7 +179,7 @@ Description:
 Age: 28
 Gender: Non-Binary
 Job: Clown
-Faction Connections:
+Faction Connections: Rebuilders
 Description:
 &lt;&lt;if $numPartyMembers &lt; 4&gt;&gt;&lt;&lt;if $clownOnTeam is false&gt;&gt;[[Bring them along.|Clown Confirm]]&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $clownOnTeam is true&gt;&gt;[[Leave them here.|Clown Reject]]&lt;&lt;/if&gt;&gt;
@@ -186,7 +187,7 @@ Description:
 Age: 37
 Gender: Male
 Job: Salesperson
-Faction Connections:
+Faction Connections: Theorists
 Description:
 &lt;&lt;if $numPartyMembers &lt; 4&gt;&gt;&lt;&lt;if $salespersonOnTeam is false&gt;&gt;[[Bring them along.|Salesperson Confirm]]&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;if $salespersonOnTeam is true&gt;&gt;[[Leave them here.|Salesperson Reject]]&lt;&lt;/if&gt;&gt;
