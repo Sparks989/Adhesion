@@ -115,7 +115,8 @@ The eight of you are in different states of conciousness as the sun begins to pe
 /% Setting Health%/
 &lt;&lt;set $cookHealth to 6&gt;&gt;&lt;&lt;set $gardenerHealth to 6&gt;&gt;&lt;&lt;set $lifeguardHealth to 6&gt;&gt;&lt;&lt;set $photographerHealth to 6&gt;&gt;&lt;&lt;set $librarianHealth to 6&gt;&gt;&lt;&lt;set $firefighterHealth to 6&gt;&gt;&lt;&lt;set $clownHealth to 6&gt;&gt;&lt;&lt;set $salespersonHealth to 6&gt;&gt; 
 /% Setting Status %/
-&lt;&lt;set $cookStatus to 0&gt;&gt;&lt;&lt;set $gardenerStatus to 0&gt;&gt;&lt;&lt;set $lifeguardStatus to 0&gt;&gt;&lt;&lt;set $photographerStatus to 0&gt;&gt;&lt;&lt;set $librarianStatus to 0&gt;&gt;&lt;&lt;set $firefighterStatus to 0&gt;&gt;&lt;&lt;set $clownStatus to 0&gt;&gt;&lt;&lt;set $salespersonStatus to 0&gt;&gt; </tw-passagedata><tw-passagedata pid="4" name="Party Select" tags="" position="1150,425" size="100,100">Barracks - 
+&lt;&lt;set $cookStatus to 0&gt;&gt;&lt;&lt;set $gardenerStatus to 0&gt;&gt;&lt;&lt;set $lifeguardStatus to 0&gt;&gt;&lt;&lt;set $photographerStatus to 0&gt;&gt;&lt;&lt;set $librarianStatus to 0&gt;&gt;&lt;&lt;set $firefighterStatus to 0&gt;&gt;&lt;&lt;set $clownStatus to 0&gt;&gt;&lt;&lt;set $salespersonStatus to 0&gt;&gt; 
+</tw-passagedata><tw-passagedata pid="4" name="Party Select" tags="" position="1150,425" size="100,100">Barracks - 
 Eight beds are arranged in a relatively plain room. Each bed has a chest at its foot and a small night stand next to it. In the corner there is a lounge where your companions are resting.
 
 [[Hiro Sakamoto (Cook)|Cook Select]]
@@ -278,7 +279,11 @@ Targets:
 &lt;&lt;set $enemyHealth to 5&gt;&gt;
 &lt;&lt;set $enemyStatus to 0&gt;&gt;
 &lt;&lt;set $pastRound1 to false&gt;&gt;
-&lt;&lt;set $specialCount to 5&gt;&gt;</tw-passagedata><tw-passagedata pid="41" name="Training Dummy" tags="" position="2325,350" size="100,100">Current turn: &lt;&lt;print $initative&gt;&gt;
+&lt;&lt;set $specialCount to 5&gt;&gt;
+&lt;&lt;set $currentTarget to 0&gt;&gt;
+
+/% Setting move booleans %/
+&lt;&lt;set $cookAttack to false&gt;&gt;&lt;&lt;set $cookDefend to false&gt;&gt;&lt;&lt;set $cookSpecial to false&gt;&gt;&lt;&lt;set $gardenerAttack to false&gt;&gt;&lt;&lt;set $gardenerDefend to false&gt;&gt;&lt;&lt;set $gardenerSpecial to false&gt;&gt;&lt;&lt;set $lifeguardAttack to false&gt;&gt;&lt;&lt;set $lifeguardDefend to false&gt;&gt;&lt;&lt;set $lifeguardSpecial to false&gt;&gt;&lt;&lt;set $photographerAttack to false&gt;&gt;&lt;&lt;set $photographerDefend to false&gt;&gt;&lt;&lt;set $photographerSpecial to false&gt;&gt;&lt;&lt;set $librarianAttack to false&gt;&gt;&lt;&lt;set $librarianDefend to false&gt;&gt;&lt;&lt;set $librarianSpecial to false&gt;&gt;&lt;&lt;set $firefighterAttack to false&gt;&gt;&lt;&lt;set $firefighterDefend to false&gt;&gt;&lt;&lt;set $firefighterSpecial to false&gt;&gt;&lt;&lt;set $clownAttack to false&gt;&gt;&lt;&lt;set $clownDefend to false&gt;&gt;&lt;&lt;set $clownSpecial to false&gt;&gt;&lt;&lt;set $salespersonAttack to false&gt;&gt;&lt;&lt;set $salespersonDefend to false&gt;&gt;&lt;&lt;set $salespersonSpecial to false&gt;&gt;</tw-passagedata><tw-passagedata pid="41" name="Training Dummy" tags="" position="2325,350" size="100,100">Current turn: &lt;&lt;print $initative&gt;&gt;
 
 Phase: &lt;&lt;if $initative is 0&gt;&gt; Enemy &lt;&lt;/if&gt;&gt;&lt;&lt;if $initative is not 0&gt;&gt;Player&lt;&lt;/if&gt;&gt;
 
@@ -288,13 +293,22 @@ Team health: &lt;&lt;if $cookOnTeam&gt;&gt; | &lt;&lt;print $cookHealth&gt;&gt; 
 
 Special Count: &lt;&lt;print $specialCount&gt;&gt;
 
+Change Target: &lt;&lt;click &quot;| Enemy |&quot;&gt;&gt; &lt;&lt;set $currentTarget to 0&gt;&gt;&lt;&lt;script&gt;&gt;state.display(state.active.title, null, &quot;back&quot;)&lt;&lt;/script&gt;&gt;&lt;&lt;/click&gt;&gt;&lt;&lt;if $cookOnTeam is true&gt;&gt;&lt;&lt;click &quot;| Hiro Sakamoto |&quot;&gt;&gt; &lt;&lt;set $currentTarget to 1&gt;&gt;&lt;&lt;script&gt;&gt;state.display(state.active.title, null, &quot;back&quot;)&lt;&lt;/script&gt;&gt; &lt;&lt;/click&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $gardenerOnTeam is true&gt;&gt;&lt;&lt;click &quot;| Lisa Eronton |&quot;&gt;&gt; &lt;&lt;set $currentTarget to 2&gt;&gt;&lt;&lt;script&gt;&gt;state.display(state.active.title, null, &quot;back&quot;)&lt;&lt;/script&gt;&gt; &lt;&lt;/click&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $lifeGuardOnTeam is true&gt;&gt;&lt;&lt;click &quot;| Ethan Phillipson |&quot;&gt;&gt; &lt;&lt;set $currentTarget to 3&gt;&gt;&lt;&lt;script&gt;&gt;state.display(state.active.title, null, &quot;back&quot;)&lt;&lt;/script&gt;&gt; &lt;&lt;/click&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $photographerOnTeam is true&gt;&gt;&lt;&lt;click &quot;| Stacy Liverston |&quot;&gt;&gt; &lt;&lt;set $currentTarget to 4&gt;&gt;&lt;&lt;script&gt;&gt;state.display(state.active.title, null, &quot;back&quot;)&lt;&lt;/script&gt;&gt; &lt;&lt;/click&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $librarianOnTeam is true&gt;&gt;&lt;&lt;click &quot;| Myne Rosa |&quot;&gt;&gt; &lt;&lt;set $currentTarget to 5&gt;&gt;&lt;&lt;script&gt;&gt;state.display(state.active.title, null, &quot;back&quot;)&lt;&lt;/script&gt;&gt; &lt;&lt;/click&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $firefighterOnTeam is true&gt;&gt;&lt;&lt;click &quot;| Alfred King |&quot;&gt;&gt; &lt;&lt;set $currentTarget to 6&gt;&gt;&lt;&lt;script&gt;&gt;state.display(state.active.title, null, &quot;back&quot;)&lt;&lt;/script&gt;&gt; &lt;&lt;/click&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $clownOnTeam is true&gt;&gt;&lt;&lt;click &quot;| Nala Syme |&quot;&gt;&gt; &lt;&lt;set $currentTarget to 7&gt;&gt;&lt;&lt;script&gt;&gt;state.display(state.active.title, null, &quot;back&quot;)&lt;&lt;/script&gt;&gt; &lt;&lt;/click&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $salespersonOnTeam is true&gt;&gt;&lt;&lt;click &quot;| Jorge Martinez |&quot;&gt;&gt; &lt;&lt;set $currentTarget to 8&gt;&gt;&lt;&lt;script&gt;&gt;state.display(state.active.title, null, &quot;back&quot;)&lt;&lt;/script&gt;&gt; &lt;&lt;/click&gt;&gt;&lt;&lt;/if&gt;&gt;
+
+Current Target: &lt;&lt;if $currentTarget is 0&gt;&gt;Enemy&lt;&lt;/if&gt;&gt;&lt;&lt;if $currentTarget is 1&gt;&gt;Hiro Sakamoto&lt;&lt;/if&gt;&gt;&lt;&lt;if $currentTarget is 2&gt;&gt;Lisa Eronton&lt;&lt;/if&gt;&gt;&lt;&lt;if $currentTarget is 3&gt;&gt;Ethan Phillipson&lt;&lt;/if&gt;&gt;&lt;&lt;if $currentTarget is 4&gt;&gt;Stacy Liverston&lt;&lt;/if&gt;&gt;&lt;&lt;if $currentTarget is 5&gt;&gt;Myne Rosa&lt;&lt;/if&gt;&gt;&lt;&lt;if $currentTarget is 6&gt;&gt;Alfred King&lt;&lt;/if&gt;&gt;&lt;&lt;if $currentTarget is 7&gt;&gt;Nala Syme&lt;&lt;/if&gt;&gt;&lt;&lt;if $currentTarget is 8&gt;&gt;Jorge Martinez&lt;&lt;/if&gt;&gt;
+
 Attack: &lt;&lt;if $initative is not 0&gt;&gt;&lt;&lt;if $cookOnTeam is true&gt;&gt;&lt;&lt;click &quot;| Frying Pan |&quot;&gt;&gt;
 /% modify your variables %/
 &lt;&lt;set $enemyHealth--&gt;&gt;
 &lt;&lt;set $initative++&gt;&gt;
 &lt;&lt;if $initative is 5&gt;&gt;
 &lt;&lt;set $initative to 0&gt;&gt;
-&lt;&lt;/if&gt;&gt;/% redisplay the currently active passage %/
+&lt;&lt;/if&gt;&gt;
+
+/% Setting move booleans %/
+&lt;&lt;set $cookAttack to true&gt;&gt;&lt;&lt;set $cookDefend to false&gt;&gt;&lt;&lt;set $cookSpecial to false&gt;&gt;&lt;&lt;set $gardenerAttack to false&gt;&gt;&lt;&lt;set $gardenerDefend to false&gt;&gt;&lt;&lt;set $gardenerSpecial to false&gt;&gt;&lt;&lt;set $lifeguardAttack to false&gt;&gt;&lt;&lt;set $lifeguardDefend to false&gt;&gt;&lt;&lt;set $lifeguardSpecial to false&gt;&gt;&lt;&lt;set $photographerAttack to false&gt;&gt;&lt;&lt;set $photographerDefend to false&gt;&gt;&lt;&lt;set $photographerSpecial to false&gt;&gt;&lt;&lt;set $librarianAttack to false&gt;&gt;&lt;&lt;set $librarianDefend to false&gt;&gt;&lt;&lt;set $librarianSpecial to false&gt;&gt;&lt;&lt;set $firefighterAttack to false&gt;&gt;&lt;&lt;set $firefighterDefend to false&gt;&gt;&lt;&lt;set $firefighterSpecial to false&gt;&gt;&lt;&lt;set $clownAttack to false&gt;&gt;&lt;&lt;set $clownDefend to false&gt;&gt;&lt;&lt;set $clownSpecial to false&gt;&gt;&lt;&lt;set $salespersonAttack to false&gt;&gt;&lt;&lt;set $salespersonDefend to false&gt;&gt;&lt;&lt;set $salespersonSpecial to false&gt;&gt;
+
+/% redisplay the currently active passage %/
 &lt;&lt;script&gt;&gt;state.display(state.active.title, null, &quot;back&quot;)&lt;&lt;/script&gt;&gt;
 
 &lt;&lt;/click&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $gardenerOnTeam is true&gt;&gt;&lt;&lt;click &quot;| Sheers |&quot;&gt;&gt;
@@ -303,7 +317,12 @@ Attack: &lt;&lt;if $initative is not 0&gt;&gt;&lt;&lt;if $cookOnTeam is true&gt;
 &lt;&lt;set $initative++&gt;&gt;
 &lt;&lt;if $initative is 5&gt;&gt;
 &lt;&lt;set $initative to 0&gt;&gt;
-&lt;&lt;/if&gt;&gt;/% redisplay the currently active passage %/
+&lt;&lt;/if&gt;&gt;
+
+/% Setting move booleans %/
+&lt;&lt;set $cookAttack to false&gt;&gt;&lt;&lt;set $cookDefend to false&gt;&gt;&lt;&lt;set $cookSpecial to false&gt;&gt;&lt;&lt;set $gardenerAttack to true&gt;&gt;&lt;&lt;set $gardenerDefend to false&gt;&gt;&lt;&lt;set $gardenerSpecial to false&gt;&gt;&lt;&lt;set $lifeguardAttack to false&gt;&gt;&lt;&lt;set $lifeguardDefend to false&gt;&gt;&lt;&lt;set $lifeguardSpecial to false&gt;&gt;&lt;&lt;set $photographerAttack to false&gt;&gt;&lt;&lt;set $photographerDefend to false&gt;&gt;&lt;&lt;set $photographerSpecial to false&gt;&gt;&lt;&lt;set $librarianAttack to false&gt;&gt;&lt;&lt;set $librarianDefend to false&gt;&gt;&lt;&lt;set $librarianSpecial to false&gt;&gt;&lt;&lt;set $firefighterAttack to false&gt;&gt;&lt;&lt;set $firefighterDefend to false&gt;&gt;&lt;&lt;set $firefighterSpecial to false&gt;&gt;&lt;&lt;set $clownAttack to false&gt;&gt;&lt;&lt;set $clownDefend to false&gt;&gt;&lt;&lt;set $clownSpecial to false&gt;&gt;&lt;&lt;set $salespersonAttack to false&gt;&gt;&lt;&lt;set $salespersonDefend to false&gt;&gt;&lt;&lt;set $salespersonSpecial to false&gt;&gt;
+
+/% redisplay the currently active passage %/
 &lt;&lt;script&gt;&gt;state.display(state.active.title, null, &quot;back&quot;)&lt;&lt;/script&gt;&gt;
 
 &lt;&lt;/click&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $lifeGuardOnTeam is true&gt;&gt;&lt;&lt;click &quot;| Pool Float |&quot;&gt;&gt;
@@ -312,7 +331,12 @@ Attack: &lt;&lt;if $initative is not 0&gt;&gt;&lt;&lt;if $cookOnTeam is true&gt;
 &lt;&lt;set $initative++&gt;&gt;
 &lt;&lt;if $initative is 5&gt;&gt;
 &lt;&lt;set $initative to 0&gt;&gt;
-&lt;&lt;/if&gt;&gt;/% redisplay the currently active passage %/
+&lt;&lt;/if&gt;&gt;
+
+/% Setting move booleans %/
+&lt;&lt;set $cookAttack to false&gt;&gt;&lt;&lt;set $cookDefend to false&gt;&gt;&lt;&lt;set $cookSpecial to false&gt;&gt;&lt;&lt;set $gardenerAttack to false&gt;&gt;&lt;&lt;set $gardenerDefend to false&gt;&gt;&lt;&lt;set $gardenerSpecial to false&gt;&gt;&lt;&lt;set $lifeguardAttack to true&gt;&gt;&lt;&lt;set $lifeguardDefend to false&gt;&gt;&lt;&lt;set $lifeguardSpecial to false&gt;&gt;&lt;&lt;set $photographerAttack to false&gt;&gt;&lt;&lt;set $photographerDefend to false&gt;&gt;&lt;&lt;set $photographerSpecial to false&gt;&gt;&lt;&lt;set $librarianAttack to false&gt;&gt;&lt;&lt;set $librarianDefend to false&gt;&gt;&lt;&lt;set $librarianSpecial to false&gt;&gt;&lt;&lt;set $firefighterAttack to false&gt;&gt;&lt;&lt;set $firefighterDefend to false&gt;&gt;&lt;&lt;set $firefighterSpecial to false&gt;&gt;&lt;&lt;set $clownAttack to false&gt;&gt;&lt;&lt;set $clownDefend to false&gt;&gt;&lt;&lt;set $clownSpecial to false&gt;&gt;&lt;&lt;set $salespersonAttack to false&gt;&gt;&lt;&lt;set $salespersonDefend to false&gt;&gt;&lt;&lt;set $salespersonSpecial to false&gt;&gt;
+
+/% redisplay the currently active passage %/
 &lt;&lt;script&gt;&gt;state.display(state.active.title, null, &quot;back&quot;)&lt;&lt;/script&gt;&gt;
 
 &lt;&lt;/click&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $photographerOnTeam is true&gt;&gt;&lt;&lt;click &quot;| Bad Picture |&quot;&gt;&gt;
@@ -321,7 +345,12 @@ Attack: &lt;&lt;if $initative is not 0&gt;&gt;&lt;&lt;if $cookOnTeam is true&gt;
 &lt;&lt;set $initative++&gt;&gt;
 &lt;&lt;if $initative is 5&gt;&gt;
 &lt;&lt;set $initative to 0&gt;&gt;
-&lt;&lt;/if&gt;&gt;/% redisplay the currently active passage %/
+&lt;&lt;/if&gt;&gt;
+
+/% Setting move booleans %/
+&lt;&lt;set $cookAttack to false&gt;&gt;&lt;&lt;set $cookDefend to false&gt;&gt;&lt;&lt;set $cookSpecial to false&gt;&gt;&lt;&lt;set $gardenerAttack to false&gt;&gt;&lt;&lt;set $gardenerDefend to false&gt;&gt;&lt;&lt;set $gardenerSpecial to false&gt;&gt;&lt;&lt;set $lifeguardAttack to false&gt;&gt;&lt;&lt;set $lifeguardDefend to false&gt;&gt;&lt;&lt;set $lifeguardSpecial to false&gt;&gt;&lt;&lt;set $photographerAttack to true&gt;&gt;&lt;&lt;set $photographerDefend to false&gt;&gt;&lt;&lt;set $photographerSpecial to false&gt;&gt;&lt;&lt;set $librarianAttack to false&gt;&gt;&lt;&lt;set $librarianDefend to false&gt;&gt;&lt;&lt;set $librarianSpecial to false&gt;&gt;&lt;&lt;set $firefighterAttack to false&gt;&gt;&lt;&lt;set $firefighterDefend to false&gt;&gt;&lt;&lt;set $firefighterSpecial to false&gt;&gt;&lt;&lt;set $clownAttack to false&gt;&gt;&lt;&lt;set $clownDefend to false&gt;&gt;&lt;&lt;set $clownSpecial to false&gt;&gt;&lt;&lt;set $salespersonAttack to false&gt;&gt;&lt;&lt;set $salespersonDefend to false&gt;&gt;&lt;&lt;set $salespersonSpecial to false&gt;&gt;
+
+/% redisplay the currently active passage %/
 &lt;&lt;script&gt;&gt;state.display(state.active.title, null, &quot;back&quot;)&lt;&lt;/script&gt;&gt;
 
 &lt;&lt;/click&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $librarianOnTeam is true&gt;&gt;&lt;&lt;click &quot;| Papercut |&quot;&gt;&gt;
@@ -330,7 +359,12 @@ Attack: &lt;&lt;if $initative is not 0&gt;&gt;&lt;&lt;if $cookOnTeam is true&gt;
 &lt;&lt;set $initative++&gt;&gt;
 &lt;&lt;if $initative is 5&gt;&gt;
 &lt;&lt;set $initative to 0&gt;&gt;
-&lt;&lt;/if&gt;&gt;/% redisplay the currently active passage %/
+&lt;&lt;/if&gt;&gt;
+
+/% Setting move booleans %/
+&lt;&lt;set $cookAttack to false&gt;&gt;&lt;&lt;set $cookDefend to false&gt;&gt;&lt;&lt;set $cookSpecial to false&gt;&gt;&lt;&lt;set $gardenerAttack to false&gt;&gt;&lt;&lt;set $gardenerDefend to false&gt;&gt;&lt;&lt;set $gardenerSpecial to false&gt;&gt;&lt;&lt;set $lifeguardAttack to false&gt;&gt;&lt;&lt;set $lifeguardDefend to false&gt;&gt;&lt;&lt;set $lifeguardSpecial to false&gt;&gt;&lt;&lt;set $photographerAttack to false&gt;&gt;&lt;&lt;set $photographerDefend to false&gt;&gt;&lt;&lt;set $photographerSpecial to false&gt;&gt;&lt;&lt;set $librarianAttack to true&gt;&gt;&lt;&lt;set $librarianDefend to false&gt;&gt;&lt;&lt;set $librarianSpecial to false&gt;&gt;&lt;&lt;set $firefighterAttack to false&gt;&gt;&lt;&lt;set $firefighterDefend to false&gt;&gt;&lt;&lt;set $firefighterSpecial to false&gt;&gt;&lt;&lt;set $clownAttack to false&gt;&gt;&lt;&lt;set $clownDefend to false&gt;&gt;&lt;&lt;set $clownSpecial to false&gt;&gt;&lt;&lt;set $salespersonAttack to false&gt;&gt;&lt;&lt;set $salespersonDefend to false&gt;&gt;&lt;&lt;set $salespersonSpecial to false&gt;&gt;
+
+/% redisplay the currently active passage %/
 &lt;&lt;script&gt;&gt;state.display(state.active.title, null, &quot;back&quot;)&lt;&lt;/script&gt;&gt;
 
 &lt;&lt;/click&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $firefighterOnTeam is true&gt;&gt;&lt;&lt;click &quot;| Ax |&quot;&gt;&gt;
@@ -340,6 +374,9 @@ Attack: &lt;&lt;if $initative is not 0&gt;&gt;&lt;&lt;if $cookOnTeam is true&gt;
 &lt;&lt;if $initative is 5&gt;&gt;
 &lt;&lt;set $initative to 0&gt;&gt;
 &lt;&lt;/if&gt;&gt;
+
+/% Setting move booleans %/
+&lt;&lt;set $cookAttack to false&gt;&gt;&lt;&lt;set $cookDefend to false&gt;&gt;&lt;&lt;set $cookSpecial to false&gt;&gt;&lt;&lt;set $gardenerAttack to false&gt;&gt;&lt;&lt;set $gardenerDefend to false&gt;&gt;&lt;&lt;set $gardenerSpecial to false&gt;&gt;&lt;&lt;set $lifeguardAttack to false&gt;&gt;&lt;&lt;set $lifeguardDefend to false&gt;&gt;&lt;&lt;set $lifeguardSpecial to false&gt;&gt;&lt;&lt;set $photographerAttack to false&gt;&gt;&lt;&lt;set $photographerDefend to false&gt;&gt;&lt;&lt;set $photographerSpecial to false&gt;&gt;&lt;&lt;set $librarianAttack to false&gt;&gt;&lt;&lt;set $librarianDefend to false&gt;&gt;&lt;&lt;set $librarianSpecial to false&gt;&gt;&lt;&lt;set $firefighterAttack to true&gt;&gt;&lt;&lt;set $firefighterDefend to false&gt;&gt;&lt;&lt;set $firefighterSpecial to false&gt;&gt;&lt;&lt;set $clownAttack to false&gt;&gt;&lt;&lt;set $clownDefend to false&gt;&gt;&lt;&lt;set $clownSpecial to false&gt;&gt;&lt;&lt;set $salespersonAttack to false&gt;&gt;&lt;&lt;set $salespersonDefend to false&gt;&gt;&lt;&lt;set $salespersonSpecial to false&gt;&gt;
 
 /% redisplay the currently active passage %/
 &lt;&lt;script&gt;&gt;state.display(state.active.title, null, &quot;back&quot;)&lt;&lt;/script&gt;&gt;
@@ -352,6 +389,9 @@ Attack: &lt;&lt;if $initative is not 0&gt;&gt;&lt;&lt;if $cookOnTeam is true&gt;
 &lt;&lt;set $initative to 0&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
+/% Setting move booleans %/
+&lt;&lt;set $cookAttack to false&gt;&gt;&lt;&lt;set $cookDefend to false&gt;&gt;&lt;&lt;set $cookSpecial to false&gt;&gt;&lt;&lt;set $gardenerAttack to false&gt;&gt;&lt;&lt;set $gardenerDefend to false&gt;&gt;&lt;&lt;set $gardenerSpecial to false&gt;&gt;&lt;&lt;set $lifeguardAttack to false&gt;&gt;&lt;&lt;set $lifeguardDefend to false&gt;&gt;&lt;&lt;set $lifeguardSpecial to false&gt;&gt;&lt;&lt;set $photographerAttack to false&gt;&gt;&lt;&lt;set $photographerDefend to false&gt;&gt;&lt;&lt;set $photographerSpecial to false&gt;&gt;&lt;&lt;set $librarianAttack to false&gt;&gt;&lt;&lt;set $librarianDefend to false&gt;&gt;&lt;&lt;set $librarianSpecial to false&gt;&gt;&lt;&lt;set $firefighterAttack to false&gt;&gt;&lt;&lt;set $firefighterDefend to false&gt;&gt;&lt;&lt;set $firefighterSpecial to false&gt;&gt;&lt;&lt;set $clownAttack to true&gt;&gt;&lt;&lt;set $clownDefend to false&gt;&gt;&lt;&lt;set $clownSpecial to false&gt;&gt;&lt;&lt;set $salespersonAttack to false&gt;&gt;&lt;&lt;set $salespersonDefend to false&gt;&gt;&lt;&lt;set $salespersonSpecial to false&gt;&gt;
+
 /% redisplay the currently active passage %/
 &lt;&lt;script&gt;&gt;state.display(state.active.title, null, &quot;back&quot;)&lt;&lt;/script&gt;&gt;
 
@@ -362,6 +402,9 @@ Attack: &lt;&lt;if $initative is not 0&gt;&gt;&lt;&lt;if $cookOnTeam is true&gt;
 &lt;&lt;if $initative is 5&gt;&gt;
 &lt;&lt;set $initative to 0&gt;&gt;
 &lt;&lt;/if&gt;&gt;
+
+/% Setting move booleans %/
+&lt;&lt;set $cookAttack to false&gt;&gt;&lt;&lt;set $cookDefend to false&gt;&gt;&lt;&lt;set $cookSpecial to false&gt;&gt;&lt;&lt;set $gardenerAttack to false&gt;&gt;&lt;&lt;set $gardenerDefend to false&gt;&gt;&lt;&lt;set $gardenerSpecial to false&gt;&gt;&lt;&lt;set $lifeguardAttack to false&gt;&gt;&lt;&lt;set $lifeguardDefend to false&gt;&gt;&lt;&lt;set $lifeguardSpecial to false&gt;&gt;&lt;&lt;set $photographerAttack to false&gt;&gt;&lt;&lt;set $photographerDefend to false&gt;&gt;&lt;&lt;set $photographerSpecial to false&gt;&gt;&lt;&lt;set $librarianAttack to false&gt;&gt;&lt;&lt;set $librarianDefend to false&gt;&gt;&lt;&lt;set $librarianSpecial to false&gt;&gt;&lt;&lt;set $firefighterAttack to false&gt;&gt;&lt;&lt;set $firefighterDefend to false&gt;&gt;&lt;&lt;set $firefighterSpecial to false&gt;&gt;&lt;&lt;set $clownAttack to false&gt;&gt;&lt;&lt;set $clownDefend to false&gt;&gt;&lt;&lt;set $clownSpecial to false&gt;&gt;&lt;&lt;set $salespersonAttack to true&gt;&gt;&lt;&lt;set $salespersonDefend to false&gt;&gt;&lt;&lt;set $salespersonSpecial to false&gt;&gt;
 
 /% redisplay the currently active passage %/
 &lt;&lt;script&gt;&gt;state.display(state.active.title, null, &quot;back&quot;)&lt;&lt;/script&gt;&gt;
@@ -381,7 +424,12 @@ Defend: &lt;&lt;if $initative is not 0&gt;&gt;&lt;&lt;if $cookOnTeam is true&gt;
 &lt;&lt;set $initative++&gt;&gt;
 &lt;&lt;if $initative is 5&gt;&gt;
 &lt;&lt;set $initative to 0&gt;&gt;
-&lt;&lt;/if&gt;&gt;/% redisplay the currently active passage %/
+&lt;&lt;/if&gt;&gt;
+
+/% Setting move booleans %/
+&lt;&lt;set $cookAttack to false&gt;&gt;&lt;&lt;set $cookDefend to true&gt;&gt;&lt;&lt;set $cookSpecial to false&gt;&gt;&lt;&lt;set $gardenerAttack to false&gt;&gt;&lt;&lt;set $gardenerDefend to false&gt;&gt;&lt;&lt;set $gardenerSpecial to false&gt;&gt;&lt;&lt;set $lifeguardAttack to false&gt;&gt;&lt;&lt;set $lifeguardDefend to false&gt;&gt;&lt;&lt;set $lifeguardSpecial to false&gt;&gt;&lt;&lt;set $photographerAttack to false&gt;&gt;&lt;&lt;set $photographerDefend to false&gt;&gt;&lt;&lt;set $photographerSpecial to false&gt;&gt;&lt;&lt;set $librarianAttack to false&gt;&gt;&lt;&lt;set $librarianDefend to false&gt;&gt;&lt;&lt;set $librarianSpecial to false&gt;&gt;&lt;&lt;set $firefighterAttack to false&gt;&gt;&lt;&lt;set $firefighterDefend to false&gt;&gt;&lt;&lt;set $firefighterSpecial to false&gt;&gt;&lt;&lt;set $clownAttack to false&gt;&gt;&lt;&lt;set $clownDefend to false&gt;&gt;&lt;&lt;set $clownSpecial to false&gt;&gt;&lt;&lt;set $salespersonAttack to false&gt;&gt;&lt;&lt;set $salespersonDefend to false&gt;&gt;&lt;&lt;set $salespersonSpecial to false&gt;&gt;
+
+/% redisplay the currently active passage %/
 &lt;&lt;script&gt;&gt;state.display(state.active.title, null, &quot;back&quot;)&lt;&lt;/script&gt;&gt;
 
 &lt;&lt;/click&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $gardenerOnTeam is true&gt;&gt;&lt;&lt;click &quot;| Natural Remedy |&quot;&gt;&gt;
@@ -397,7 +445,12 @@ Defend: &lt;&lt;if $initative is not 0&gt;&gt;&lt;&lt;if $cookOnTeam is true&gt;
 &lt;&lt;set $initative++&gt;&gt;
 &lt;&lt;if $initative is 5&gt;&gt;
 &lt;&lt;set $initative to 0&gt;&gt;
-&lt;&lt;/if&gt;&gt;/% redisplay the currently active passage %/
+&lt;&lt;/if&gt;&gt;
+
+/% Setting move booleans %/
+&lt;&lt;set $cookAttack to false&gt;&gt;&lt;&lt;set $cookDefend to false&gt;&gt;&lt;&lt;set $cookSpecial to false&gt;&gt;&lt;&lt;set $gardenerAttack to false&gt;&gt;&lt;&lt;set $gardenerDefend to true&gt;&gt;&lt;&lt;set $gardenerSpecial to false&gt;&gt;&lt;&lt;set $lifeguardAttack to false&gt;&gt;&lt;&lt;set $lifeguardDefend to false&gt;&gt;&lt;&lt;set $lifeguardSpecial to false&gt;&gt;&lt;&lt;set $photographerAttack to false&gt;&gt;&lt;&lt;set $photographerDefend to false&gt;&gt;&lt;&lt;set $photographerSpecial to false&gt;&gt;&lt;&lt;set $librarianAttack to false&gt;&gt;&lt;&lt;set $librarianDefend to false&gt;&gt;&lt;&lt;set $librarianSpecial to false&gt;&gt;&lt;&lt;set $firefighterAttack to false&gt;&gt;&lt;&lt;set $firefighterDefend to false&gt;&gt;&lt;&lt;set $firefighterSpecial to false&gt;&gt;&lt;&lt;set $clownAttack to false&gt;&gt;&lt;&lt;set $clownDefend to false&gt;&gt;&lt;&lt;set $clownSpecial to false&gt;&gt;&lt;&lt;set $salespersonAttack to false&gt;&gt;&lt;&lt;set $salespersonDefend to false&gt;&gt;&lt;&lt;set $salespersonSpecial to false&gt;&gt;
+
+/% redisplay the currently active passage %/
 &lt;&lt;script&gt;&gt;state.display(state.active.title, null, &quot;back&quot;)&lt;&lt;/script&gt;&gt;
 
 &lt;&lt;/click&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $lifeGuardOnTeam is true&gt;&gt;&lt;&lt;click &quot;| No Running |&quot;&gt;&gt;
@@ -406,7 +459,12 @@ Defend: &lt;&lt;if $initative is not 0&gt;&gt;&lt;&lt;if $cookOnTeam is true&gt;
 &lt;&lt;set $initative++&gt;&gt;
 &lt;&lt;if $initative is 5&gt;&gt;
 &lt;&lt;set $initative to 0&gt;&gt;
-&lt;&lt;/if&gt;&gt;/% redisplay the currently active passage %/
+&lt;&lt;/if&gt;&gt;
+
+/% Setting move booleans %/
+&lt;&lt;set $cookAttack to false&gt;&gt;&lt;&lt;set $cookDefend to false&gt;&gt;&lt;&lt;set $cookSpecial to false&gt;&gt;&lt;&lt;set $gardenerAttack to false&gt;&gt;&lt;&lt;set $gardenerDefend to false&gt;&gt;&lt;&lt;set $gardenerSpecial to false&gt;&gt;&lt;&lt;set $lifeguardAttack to false&gt;&gt;&lt;&lt;set $lifeguardDefend to true&gt;&gt;&lt;&lt;set $lifeguardSpecial to false&gt;&gt;&lt;&lt;set $photographerAttack to false&gt;&gt;&lt;&lt;set $photographerDefend to false&gt;&gt;&lt;&lt;set $photographerSpecial to false&gt;&gt;&lt;&lt;set $librarianAttack to false&gt;&gt;&lt;&lt;set $librarianDefend to false&gt;&gt;&lt;&lt;set $librarianSpecial to false&gt;&gt;&lt;&lt;set $firefighterAttack to false&gt;&gt;&lt;&lt;set $firefighterDefend to false&gt;&gt;&lt;&lt;set $firefighterSpecial to false&gt;&gt;&lt;&lt;set $clownAttack to false&gt;&gt;&lt;&lt;set $clownDefend to false&gt;&gt;&lt;&lt;set $clownSpecial to false&gt;&gt;&lt;&lt;set $salespersonAttack to false&gt;&gt;&lt;&lt;set $salespersonDefend to false&gt;&gt;&lt;&lt;set $salespersonSpecial to false&gt;&gt;
+
+/% redisplay the currently active passage %/
 &lt;&lt;script&gt;&gt;state.display(state.active.title, null, &quot;back&quot;)&lt;&lt;/script&gt;&gt;
 
 &lt;&lt;/click&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $photographerOnTeam is true&gt;&gt;&lt;&lt;click &quot;| Blackmail |&quot;&gt;&gt;
@@ -415,7 +473,12 @@ Defend: &lt;&lt;if $initative is not 0&gt;&gt;&lt;&lt;if $cookOnTeam is true&gt;
 &lt;&lt;set $initative++&gt;&gt;
 &lt;&lt;if $initative is 5&gt;&gt;
 &lt;&lt;set $initative to 0&gt;&gt;
-&lt;&lt;/if&gt;&gt;/% redisplay the currently active passage %/
+&lt;&lt;/if&gt;&gt;
+
+/% Setting move booleans %/
+&lt;&lt;set $cookAttack to false&gt;&gt;&lt;&lt;set $cookDefend to false&gt;&gt;&lt;&lt;set $cookSpecial to false&gt;&gt;&lt;&lt;set $gardenerAttack to false&gt;&gt;&lt;&lt;set $gardenerDefend to false&gt;&gt;&lt;&lt;set $gardenerSpecial to false&gt;&gt;&lt;&lt;set $lifeguardAttack to false&gt;&gt;&lt;&lt;set $lifeguardDefend to false&gt;&gt;&lt;&lt;set $lifeguardSpecial to false&gt;&gt;&lt;&lt;set $photographerAttack to false&gt;&gt;&lt;&lt;set $photographerDefend to true&gt;&gt;&lt;&lt;set $photographerSpecial to false&gt;&gt;&lt;&lt;set $librarianAttack to false&gt;&gt;&lt;&lt;set $librarianDefend to false&gt;&gt;&lt;&lt;set $librarianSpecial to false&gt;&gt;&lt;&lt;set $firefighterAttack to false&gt;&gt;&lt;&lt;set $firefighterDefend to false&gt;&gt;&lt;&lt;set $firefighterSpecial to false&gt;&gt;&lt;&lt;set $clownAttack to false&gt;&gt;&lt;&lt;set $clownDefend to false&gt;&gt;&lt;&lt;set $clownSpecial to false&gt;&gt;&lt;&lt;set $salespersonAttack to false&gt;&gt;&lt;&lt;set $salespersonDefend to false&gt;&gt;&lt;&lt;set $salespersonSpecial to false&gt;&gt;
+
+/% redisplay the currently active passage %/
 &lt;&lt;script&gt;&gt;state.display(state.active.title, null, &quot;back&quot;)&lt;&lt;/script&gt;&gt;
 
 &lt;&lt;/click&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $librarianOnTeam is true&gt;&gt;&lt;&lt;click &quot;| Analysis |&quot;&gt;&gt;
@@ -424,7 +487,12 @@ Defend: &lt;&lt;if $initative is not 0&gt;&gt;&lt;&lt;if $cookOnTeam is true&gt;
 &lt;&lt;set $initative++&gt;&gt;
 &lt;&lt;if $initative is 5&gt;&gt;
 &lt;&lt;set $initative to 0&gt;&gt;
-&lt;&lt;/if&gt;&gt;/% redisplay the currently active passage %/
+&lt;&lt;/if&gt;&gt;
+
+/% Setting move booleans %/
+&lt;&lt;set $cookAttack to false&gt;&gt;&lt;&lt;set $cookDefend to false&gt;&gt;&lt;&lt;set $cookSpecial to false&gt;&gt;&lt;&lt;set $gardenerAttack to false&gt;&gt;&lt;&lt;set $gardenerDefend to false&gt;&gt;&lt;&lt;set $gardenerSpecial to false&gt;&gt;&lt;&lt;set $lifeguardAttack to false&gt;&gt;&lt;&lt;set $lifeguardDefend to false&gt;&gt;&lt;&lt;set $lifeguardSpecial to false&gt;&gt;&lt;&lt;set $photographerAttack to false&gt;&gt;&lt;&lt;set $photographerDefend to false&gt;&gt;&lt;&lt;set $photographerSpecial to false&gt;&gt;&lt;&lt;set $librarianAttack to false&gt;&gt;&lt;&lt;set $librarianDefend to true&gt;&gt;&lt;&lt;set $librarianSpecial to false&gt;&gt;&lt;&lt;set $firefighterAttack to false&gt;&gt;&lt;&lt;set $firefighterDefend to false&gt;&gt;&lt;&lt;set $firefighterSpecial to false&gt;&gt;&lt;&lt;set $clownAttack to false&gt;&gt;&lt;&lt;set $clownDefend to false&gt;&gt;&lt;&lt;set $clownSpecial to false&gt;&gt;&lt;&lt;set $salespersonAttack to false&gt;&gt;&lt;&lt;set $salespersonDefend to false&gt;&gt;&lt;&lt;set $salespersonSpecial to false&gt;&gt;
+
+/% redisplay the currently active passage %/
 &lt;&lt;script&gt;&gt;state.display(state.active.title, null, &quot;back&quot;)&lt;&lt;/script&gt;&gt;
 
 &lt;&lt;/click&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $firefighterOnTeam is true&gt;&gt;&lt;&lt;click &quot;| I&#39;ll save you |&quot;&gt;&gt;
@@ -434,6 +502,9 @@ Defend: &lt;&lt;if $initative is not 0&gt;&gt;&lt;&lt;if $cookOnTeam is true&gt;
 &lt;&lt;if $initative is 5&gt;&gt;
 &lt;&lt;set $initative to 0&gt;&gt;
 &lt;&lt;/if&gt;&gt;
+
+/% Setting move booleans %/
+&lt;&lt;set $cookAttack to false&gt;&gt;&lt;&lt;set $cookDefend to false&gt;&gt;&lt;&lt;set $cookSpecial to false&gt;&gt;&lt;&lt;set $gardenerAttack to false&gt;&gt;&lt;&lt;set $gardenerDefend to false&gt;&gt;&lt;&lt;set $gardenerSpecial to false&gt;&gt;&lt;&lt;set $lifeguardAttack to false&gt;&gt;&lt;&lt;set $lifeguardDefend to false&gt;&gt;&lt;&lt;set $lifeguardSpecial to false&gt;&gt;&lt;&lt;set $photographerAttack to false&gt;&gt;&lt;&lt;set $photographerDefend to false&gt;&gt;&lt;&lt;set $photographerSpecial to false&gt;&gt;&lt;&lt;set $librarianAttack to false&gt;&gt;&lt;&lt;set $librarianDefend to false&gt;&gt;&lt;&lt;set $librarianSpecial to false&gt;&gt;&lt;&lt;set $firefighterAttack to false&gt;&gt;&lt;&lt;set $firefighterDefend to true&gt;&gt;&lt;&lt;set $firefighterSpecial to false&gt;&gt;&lt;&lt;set $clownAttack to false&gt;&gt;&lt;&lt;set $clownDefend to false&gt;&gt;&lt;&lt;set $clownSpecial to false&gt;&gt;&lt;&lt;set $salespersonAttack to false&gt;&gt;&lt;&lt;set $salespersonDefend to false&gt;&gt;&lt;&lt;set $salespersonSpecial to false&gt;&gt;
 
 /% redisplay the currently active passage %/
 &lt;&lt;script&gt;&gt;state.display(state.active.title, null, &quot;back&quot;)&lt;&lt;/script&gt;&gt;
@@ -446,6 +517,9 @@ Defend: &lt;&lt;if $initative is not 0&gt;&gt;&lt;&lt;if $cookOnTeam is true&gt;
 &lt;&lt;set $initative to 0&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
+/% Setting move booleans %/
+&lt;&lt;set $cookAttack to false&gt;&gt;&lt;&lt;set $cookDefend to false&gt;&gt;&lt;&lt;set $cookSpecial to false&gt;&gt;&lt;&lt;set $gardenerAttack to false&gt;&gt;&lt;&lt;set $gardenerDefend to false&gt;&gt;&lt;&lt;set $gardenerSpecial to false&gt;&gt;&lt;&lt;set $lifeguardAttack to false&gt;&gt;&lt;&lt;set $lifeguardDefend to false&gt;&gt;&lt;&lt;set $lifeguardSpecial to false&gt;&gt;&lt;&lt;set $photographerAttack to false&gt;&gt;&lt;&lt;set $photographerDefend to false&gt;&gt;&lt;&lt;set $photographerSpecial to false&gt;&gt;&lt;&lt;set $librarianAttack to false&gt;&gt;&lt;&lt;set $librarianDefend to false&gt;&gt;&lt;&lt;set $librarianSpecial to false&gt;&gt;&lt;&lt;set $firefighterAttack to false&gt;&gt;&lt;&lt;set $firefighterDefend to false&gt;&gt;&lt;&lt;set $firefighterSpecial to false&gt;&gt;&lt;&lt;set $clownAttack to false&gt;&gt;&lt;&lt;set $clownDefend to true&gt;&gt;&lt;&lt;set $clownSpecial to false&gt;&gt;&lt;&lt;set $salespersonAttack to false&gt;&gt;&lt;&lt;set $salespersonDefend to false&gt;&gt;&lt;&lt;set $salespersonSpecial to false&gt;&gt;
+
 /% redisplay the currently active passage %/
 &lt;&lt;script&gt;&gt;state.display(state.active.title, null, &quot;back&quot;)&lt;&lt;/script&gt;&gt;
 
@@ -456,6 +530,9 @@ Defend: &lt;&lt;if $initative is not 0&gt;&gt;&lt;&lt;if $cookOnTeam is true&gt;
 &lt;&lt;if $initative is 5&gt;&gt;
 &lt;&lt;set $initative to 0&gt;&gt;
 &lt;&lt;/if&gt;&gt;
+
+/% Setting move booleans %/
+&lt;&lt;set $cookAttack to false&gt;&gt;&lt;&lt;set $cookDefend to false&gt;&gt;&lt;&lt;set $cookSpecial to false&gt;&gt;&lt;&lt;set $gardenerAttack to false&gt;&gt;&lt;&lt;set $gardenerDefend to false&gt;&gt;&lt;&lt;set $gardenerSpecial to false&gt;&gt;&lt;&lt;set $lifeguardAttack to false&gt;&gt;&lt;&lt;set $lifeguardDefend to false&gt;&gt;&lt;&lt;set $lifeguardSpecial to false&gt;&gt;&lt;&lt;set $photographerAttack to false&gt;&gt;&lt;&lt;set $photographerDefend to false&gt;&gt;&lt;&lt;set $photographerSpecial to false&gt;&gt;&lt;&lt;set $librarianAttack to false&gt;&gt;&lt;&lt;set $librarianDefend to false&gt;&gt;&lt;&lt;set $librarianSpecial to false&gt;&gt;&lt;&lt;set $firefighterAttack to false&gt;&gt;&lt;&lt;set $firefighterDefend to false&gt;&gt;&lt;&lt;set $firefighterSpecial to false&gt;&gt;&lt;&lt;set $clownAttack to false&gt;&gt;&lt;&lt;set $clownDefend to false&gt;&gt;&lt;&lt;set $clownSpecial to false&gt;&gt;&lt;&lt;set $salespersonAttack to false&gt;&gt;&lt;&lt;set $salespersonDefend to true&gt;&gt;&lt;&lt;set $salespersonSpecial to false&gt;&gt;
 
 /% redisplay the currently active passage %/
 &lt;&lt;script&gt;&gt;state.display(state.active.title, null, &quot;back&quot;)&lt;&lt;/script&gt;&gt;
@@ -470,7 +547,12 @@ Special: &lt;&lt;if $specialCount is not 0&gt;&gt;&lt;&lt;if $initative is not 0
 &lt;&lt;set $initative++&gt;&gt;
 &lt;&lt;if $initative is 5&gt;&gt;
 &lt;&lt;set $initative to 0&gt;&gt;
-&lt;&lt;/if&gt;&gt;/% redisplay the currently active passage %/
+&lt;&lt;/if&gt;&gt;
+
+/% Setting move booleans %/
+&lt;&lt;set $cookAttack to false&gt;&gt;&lt;&lt;set $cookDefend to false&gt;&gt;&lt;&lt;set $cookSpecial to true&gt;&gt;&lt;&lt;set $gardenerAttack to false&gt;&gt;&lt;&lt;set $gardenerDefend to false&gt;&gt;&lt;&lt;set $gardenerSpecial to false&gt;&gt;&lt;&lt;set $lifeguardAttack to false&gt;&gt;&lt;&lt;set $lifeguardDefend to false&gt;&gt;&lt;&lt;set $lifeguardSpecial to false&gt;&gt;&lt;&lt;set $photographerAttack to false&gt;&gt;&lt;&lt;set $photographerDefend to false&gt;&gt;&lt;&lt;set $photographerSpecial to false&gt;&gt;&lt;&lt;set $librarianAttack to false&gt;&gt;&lt;&lt;set $librarianDefend to false&gt;&gt;&lt;&lt;set $librarianSpecial to false&gt;&gt;&lt;&lt;set $firefighterAttack to false&gt;&gt;&lt;&lt;set $firefighterDefend to false&gt;&gt;&lt;&lt;set $firefighterSpecial to false&gt;&gt;&lt;&lt;set $clownAttack to false&gt;&gt;&lt;&lt;set $clownDefend to false&gt;&gt;&lt;&lt;set $clownSpecial to false&gt;&gt;&lt;&lt;set $salespersonAttack to false&gt;&gt;&lt;&lt;set $salespersonDefend to false&gt;&gt;&lt;&lt;set $salespersonSpecial to false&gt;&gt;
+
+/% redisplay the currently active passage %/
 &lt;&lt;script&gt;&gt;state.display(state.active.title, null, &quot;back&quot;)&lt;&lt;/script&gt;&gt;
 
 &lt;&lt;/click&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $gardenerOnTeam is true&gt;&gt;&lt;&lt;click &quot;| Smell the Flowers |&quot;&gt;&gt;
@@ -487,7 +569,12 @@ Special: &lt;&lt;if $specialCount is not 0&gt;&gt;&lt;&lt;if $initative is not 0
 &lt;&lt;set $initative++&gt;&gt;
 &lt;&lt;if $initative is 5&gt;&gt;
 &lt;&lt;set $initative to 0&gt;&gt;
-&lt;&lt;/if&gt;&gt;/% redisplay the currently active passage %/
+&lt;&lt;/if&gt;&gt;
+
+/% Setting move booleans %/
+&lt;&lt;set $cookAttack to false&gt;&gt;&lt;&lt;set $cookDefend to false&gt;&gt;&lt;&lt;set $cookSpecial to false&gt;&gt;&lt;&lt;set $gardenerAttack to false&gt;&gt;&lt;&lt;set $gardenerDefend to false&gt;&gt;&lt;&lt;set $gardenerSpecial to true&gt;&gt;&lt;&lt;set $lifeguardAttack to false&gt;&gt;&lt;&lt;set $lifeguardDefend to false&gt;&gt;&lt;&lt;set $lifeguardSpecial to false&gt;&gt;&lt;&lt;set $photographerAttack to false&gt;&gt;&lt;&lt;set $photographerDefend to false&gt;&gt;&lt;&lt;set $photographerSpecial to false&gt;&gt;&lt;&lt;set $librarianAttack to false&gt;&gt;&lt;&lt;set $librarianDefend to false&gt;&gt;&lt;&lt;set $librarianSpecial to false&gt;&gt;&lt;&lt;set $firefighterAttack to false&gt;&gt;&lt;&lt;set $firefighterDefend to false&gt;&gt;&lt;&lt;set $firefighterSpecial to false&gt;&gt;&lt;&lt;set $clownAttack to false&gt;&gt;&lt;&lt;set $clownDefend to false&gt;&gt;&lt;&lt;set $clownSpecial to false&gt;&gt;&lt;&lt;set $salespersonAttack to false&gt;&gt;&lt;&lt;set $salespersonDefend to false&gt;&gt;&lt;&lt;set $salespersonSpecial to false&gt;&gt;
+
+/% redisplay the currently active passage %/
 &lt;&lt;script&gt;&gt;state.display(state.active.title, null, &quot;back&quot;)&lt;&lt;/script&gt;&gt;
 
 &lt;&lt;/click&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $lifeGuardOnTeam is true&gt;&gt;&lt;&lt;click &quot;| Mouth to Mouth |&quot;&gt;&gt;
@@ -497,7 +584,12 @@ Special: &lt;&lt;if $specialCount is not 0&gt;&gt;&lt;&lt;if $initative is not 0
 &lt;&lt;set $initative++&gt;&gt;
 &lt;&lt;if $initative is 5&gt;&gt;
 &lt;&lt;set $initative to 0&gt;&gt;
-&lt;&lt;/if&gt;&gt;/% redisplay the currently active passage %/
+&lt;&lt;/if&gt;&gt;
+
+/% Setting move booleans %/
+&lt;&lt;set $cookAttack to false&gt;&gt;&lt;&lt;set $cookDefend to false&gt;&gt;&lt;&lt;set $cookSpecial to false&gt;&gt;&lt;&lt;set $gardenerAttack to false&gt;&gt;&lt;&lt;set $gardenerDefend to false&gt;&gt;&lt;&lt;set $gardenerSpecial to false&gt;&gt;&lt;&lt;set $lifeguardAttack to false&gt;&gt;&lt;&lt;set $lifeguardDefend to false&gt;&gt;&lt;&lt;set $lifeguardSpecial to true&gt;&gt;&lt;&lt;set $photographerAttack to false&gt;&gt;&lt;&lt;set $photographerDefend to false&gt;&gt;&lt;&lt;set $photographerSpecial to false&gt;&gt;&lt;&lt;set $librarianAttack to false&gt;&gt;&lt;&lt;set $librarianDefend to false&gt;&gt;&lt;&lt;set $librarianSpecial to false&gt;&gt;&lt;&lt;set $firefighterAttack to false&gt;&gt;&lt;&lt;set $firefighterDefend to false&gt;&gt;&lt;&lt;set $firefighterSpecial to false&gt;&gt;&lt;&lt;set $clownAttack to false&gt;&gt;&lt;&lt;set $clownDefend to false&gt;&gt;&lt;&lt;set $clownSpecial to false&gt;&gt;&lt;&lt;set $salespersonAttack to false&gt;&gt;&lt;&lt;set $salespersonDefend to false&gt;&gt;&lt;&lt;set $salespersonSpecial to false&gt;&gt;
+
+/% redisplay the currently active passage %/
 &lt;&lt;script&gt;&gt;state.display(state.active.title, null, &quot;back&quot;)&lt;&lt;/script&gt;&gt;
 
 &lt;&lt;/click&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $photographerOnTeam is true&gt;&gt;&lt;&lt;click &quot;| Overexposed |&quot;&gt;&gt;
@@ -507,7 +599,12 @@ Special: &lt;&lt;if $specialCount is not 0&gt;&gt;&lt;&lt;if $initative is not 0
 &lt;&lt;set $initative++&gt;&gt;
 &lt;&lt;if $initative is 5&gt;&gt;
 &lt;&lt;set $initative to 0&gt;&gt;
-&lt;&lt;/if&gt;&gt;/% redisplay the currently active passage %/
+&lt;&lt;/if&gt;&gt;
+
+/% Setting move booleans %/
+&lt;&lt;set $cookAttack to false&gt;&gt;&lt;&lt;set $cookDefend to false&gt;&gt;&lt;&lt;set $cookSpecial to false&gt;&gt;&lt;&lt;set $gardenerAttack to false&gt;&gt;&lt;&lt;set $gardenerDefend to false&gt;&gt;&lt;&lt;set $gardenerSpecial to false&gt;&gt;&lt;&lt;set $lifeguardAttack to false&gt;&gt;&lt;&lt;set $lifeguardDefend to false&gt;&gt;&lt;&lt;set $lifeguardSpecial to false&gt;&gt;&lt;&lt;set $photographerAttack to false&gt;&gt;&lt;&lt;set $photographerDefend to false&gt;&gt;&lt;&lt;set $photographerSpecial to true&gt;&gt;&lt;&lt;set $librarianAttack to false&gt;&gt;&lt;&lt;set $librarianDefend to false&gt;&gt;&lt;&lt;set $librarianSpecial to false&gt;&gt;&lt;&lt;set $firefighterAttack to false&gt;&gt;&lt;&lt;set $firefighterDefend to false&gt;&gt;&lt;&lt;set $firefighterSpecial to false&gt;&gt;&lt;&lt;set $clownAttack to false&gt;&gt;&lt;&lt;set $clownDefend to false&gt;&gt;&lt;&lt;set $clownSpecial to false&gt;&gt;&lt;&lt;set $salespersonAttack to false&gt;&gt;&lt;&lt;set $salespersonDefend to false&gt;&gt;&lt;&lt;set $salespersonSpecial to false&gt;&gt;
+
+/% redisplay the currently active passage %/
 &lt;&lt;script&gt;&gt;state.display(state.active.title, null, &quot;back&quot;)&lt;&lt;/script&gt;&gt;
 
 &lt;&lt;/click&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $librarianOnTeam is true&gt;&gt;&lt;&lt;click &quot;| Lore Dump |&quot;&gt;&gt;
@@ -517,7 +614,12 @@ Special: &lt;&lt;if $specialCount is not 0&gt;&gt;&lt;&lt;if $initative is not 0
 &lt;&lt;set $initative++&gt;&gt;
 &lt;&lt;if $initative is 5&gt;&gt;
 &lt;&lt;set $initative to 0&gt;&gt;
-&lt;&lt;/if&gt;&gt;/% redisplay the currently active passage %/
+&lt;&lt;/if&gt;&gt;
+
+/% Setting move booleans %/
+&lt;&lt;set $cookAttack to false&gt;&gt;&lt;&lt;set $cookDefend to false&gt;&gt;&lt;&lt;set $cookSpecial to false&gt;&gt;&lt;&lt;set $gardenerAttack to false&gt;&gt;&lt;&lt;set $gardenerDefend to false&gt;&gt;&lt;&lt;set $gardenerSpecial to false&gt;&gt;&lt;&lt;set $lifeguardAttack to false&gt;&gt;&lt;&lt;set $lifeguardDefend to false&gt;&gt;&lt;&lt;set $lifeguardSpecial to false&gt;&gt;&lt;&lt;set $photographerAttack to false&gt;&gt;&lt;&lt;set $photographerDefend to false&gt;&gt;&lt;&lt;set $photographerSpecial to false&gt;&gt;&lt;&lt;set $librarianAttack to false&gt;&gt;&lt;&lt;set $librarianDefend to false&gt;&gt;&lt;&lt;set $librarianSpecial to true&gt;&gt;&lt;&lt;set $firefighterAttack to false&gt;&gt;&lt;&lt;set $firefighterDefend to false&gt;&gt;&lt;&lt;set $firefighterSpecial to false&gt;&gt;&lt;&lt;set $clownAttack to false&gt;&gt;&lt;&lt;set $clownDefend to false&gt;&gt;&lt;&lt;set $clownSpecial to false&gt;&gt;&lt;&lt;set $salespersonAttack to false&gt;&gt;&lt;&lt;set $salespersonDefend to false&gt;&gt;&lt;&lt;set $salespersonSpecial to false&gt;&gt;
+
+/% redisplay the currently active passage %/
 &lt;&lt;script&gt;&gt;state.display(state.active.title, null, &quot;back&quot;)&lt;&lt;/script&gt;&gt;
 
 &lt;&lt;/click&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $firefighterOnTeam is true&gt;&gt;&lt;&lt;click &quot;| Bucket of Water |&quot;&gt;&gt;
@@ -529,6 +631,9 @@ Special: &lt;&lt;if $specialCount is not 0&gt;&gt;&lt;&lt;if $initative is not 0
 &lt;&lt;if $initative is 5&gt;&gt;
 &lt;&lt;set $initative to 0&gt;&gt;
 &lt;&lt;/if&gt;&gt;
+
+/% Setting move booleans %/
+&lt;&lt;set $cookAttack to false&gt;&gt;&lt;&lt;set $cookDefend to false&gt;&gt;&lt;&lt;set $cookSpecial to false&gt;&gt;&lt;&lt;set $gardenerAttack to false&gt;&gt;&lt;&lt;set $gardenerDefend to false&gt;&gt;&lt;&lt;set $gardenerSpecial to false&gt;&gt;&lt;&lt;set $lifeguardAttack to false&gt;&gt;&lt;&lt;set $lifeguardDefend to false&gt;&gt;&lt;&lt;set $lifeguardSpecial to false&gt;&gt;&lt;&lt;set $photographerAttack to false&gt;&gt;&lt;&lt;set $photographerDefend to false&gt;&gt;&lt;&lt;set $photographerSpecial to false&gt;&gt;&lt;&lt;set $librarianAttack to false&gt;&gt;&lt;&lt;set $librarianDefend to false&gt;&gt;&lt;&lt;set $librarianSpecial to false&gt;&gt;&lt;&lt;set $firefighterAttack to false&gt;&gt;&lt;&lt;set $firefighterDefend to false&gt;&gt;&lt;&lt;set $firefighterSpecial to true&gt;&gt;&lt;&lt;set $clownAttack to false&gt;&gt;&lt;&lt;set $clownDefend to false&gt;&gt;&lt;&lt;set $clownSpecial to false&gt;&gt;&lt;&lt;set $salespersonAttack to false&gt;&gt;&lt;&lt;set $salespersonDefend to false&gt;&gt;&lt;&lt;set $salespersonSpecial to false&gt;&gt;
 
 /% redisplay the currently active passage %/
 &lt;&lt;script&gt;&gt;state.display(state.active.title, null, &quot;back&quot;)&lt;&lt;/script&gt;&gt;
@@ -542,6 +647,9 @@ Special: &lt;&lt;if $specialCount is not 0&gt;&gt;&lt;&lt;if $initative is not 0
 &lt;&lt;set $initative to 0&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
+/% Setting move booleans %/
+&lt;&lt;set $cookAttack to false&gt;&gt;&lt;&lt;set $cookDefend to false&gt;&gt;&lt;&lt;set $cookSpecial to false&gt;&gt;&lt;&lt;set $gardenerAttack to false&gt;&gt;&lt;&lt;set $gardenerDefend to false&gt;&gt;&lt;&lt;set $gardenerSpecial to false&gt;&gt;&lt;&lt;set $lifeguardAttack to false&gt;&gt;&lt;&lt;set $lifeguardDefend to false&gt;&gt;&lt;&lt;set $lifeguardSpecial to false&gt;&gt;&lt;&lt;set $photographerAttack to false&gt;&gt;&lt;&lt;set $photographerDefend to false&gt;&gt;&lt;&lt;set $photographerSpecial to false&gt;&gt;&lt;&lt;set $librarianAttack to false&gt;&gt;&lt;&lt;set $librarianDefend to false&gt;&gt;&lt;&lt;set $librarianSpecial to false&gt;&gt;&lt;&lt;set $firefighterAttack to false&gt;&gt;&lt;&lt;set $firefighterDefend to false&gt;&gt;&lt;&lt;set $firefighterSpecial to false&gt;&gt;&lt;&lt;set $clownAttack to false&gt;&gt;&lt;&lt;set $clownDefend to false&gt;&gt;&lt;&lt;set $clownSpecial to true&gt;&gt;&lt;&lt;set $salespersonAttack to false&gt;&gt;&lt;&lt;set $salespersonDefend to false&gt;&gt;&lt;&lt;set $salespersonSpecial to false&gt;&gt;
+
 /% redisplay the currently active passage %/
 &lt;&lt;script&gt;&gt;state.display(state.active.title, null, &quot;back&quot;)&lt;&lt;/script&gt;&gt;
 
@@ -554,17 +662,23 @@ Special: &lt;&lt;if $specialCount is not 0&gt;&gt;&lt;&lt;if $initative is not 0
 &lt;&lt;set $initative to 0&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 
+/% Setting move booleans %/
+&lt;&lt;set $cookAttack to false&gt;&gt;&lt;&lt;set $cookDefend to false&gt;&gt;&lt;&lt;set $cookSpecial to false&gt;&gt;&lt;&lt;set $gardenerAttack to false&gt;&gt;&lt;&lt;set $gardenerDefend to false&gt;&gt;&lt;&lt;set $gardenerSpecial to false&gt;&gt;&lt;&lt;set $lifeguardAttack to false&gt;&gt;&lt;&lt;set $lifeguardDefend to false&gt;&gt;&lt;&lt;set $lifeguardSpecial to false&gt;&gt;&lt;&lt;set $photographerAttack to false&gt;&gt;&lt;&lt;set $photographerDefend to false&gt;&gt;&lt;&lt;set $photographerSpecial to false&gt;&gt;&lt;&lt;set $librarianAttack to false&gt;&gt;&lt;&lt;set $librarianDefend to false&gt;&gt;&lt;&lt;set $librarianSpecial to false&gt;&gt;&lt;&lt;set $firefighterAttack to false&gt;&gt;&lt;&lt;set $firefighterDefend to false&gt;&gt;&lt;&lt;set $firefighterSpecial to false&gt;&gt;&lt;&lt;set $clownAttack to false&gt;&gt;&lt;&lt;set $clownDefend to false&gt;&gt;&lt;&lt;set $clownSpecial to false&gt;&gt;&lt;&lt;set $salespersonAttack to false&gt;&gt;&lt;&lt;set $salespersonDefend to false&gt;&gt;&lt;&lt;set $salespersonSpecial to true&gt;&gt;
+
 /% redisplay the currently active passage %/
 &lt;&lt;script&gt;&gt;state.display(state.active.title, null, &quot;back&quot;)&lt;&lt;/script&gt;&gt;
 
 &lt;&lt;/click&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 
-Player Action: 
+Player Action: &lt;&lt;if $cookAttack is true&gt;&gt;Cook Attack &lt;&lt;/if&gt;&gt;&lt;&lt;if $cookDefend is true&gt;&gt;Cook Defend &lt;&lt;/if&gt;&gt;&lt;&lt;if $cookSpecial is true&gt;&gt;Cook Special &lt;&lt;/if&gt;&gt;&lt;&lt;if $gardenerAttack is true&gt;&gt;gardener Attack &lt;&lt;/if&gt;&gt;&lt;&lt;if $gardenerDefend is true&gt;&gt;gardener Defend &lt;&lt;/if&gt;&gt;&lt;&lt;if $gardenerSpecial is true&gt;&gt;gardener Special &lt;&lt;/if&gt;&gt;&lt;&lt;if $lifeguardAttack is true&gt;&gt;lifeguard Attack &lt;&lt;/if&gt;&gt;&lt;&lt;if $lifeguardDefend is true&gt;&gt;lifeguard Defend &lt;&lt;/if&gt;&gt;&lt;&lt;if $lifeguardSpecial is true&gt;&gt;lifeguard Special &lt;&lt;/if&gt;&gt;&lt;&lt;if $photographerAttack is true&gt;&gt;photographer Attack &lt;&lt;/if&gt;&gt;&lt;&lt;if $photographerDefend is true&gt;&gt;photographer Defend &lt;&lt;/if&gt;&gt;&lt;&lt;if $photographerSpecial is true&gt;&gt;photographer Special &lt;&lt;/if&gt;&gt;&lt;&lt;if $librarianAttack is true&gt;&gt;librarian Attack &lt;&lt;/if&gt;&gt;&lt;&lt;if $librarianDefend is true&gt;&gt;librarian Defend &lt;&lt;/if&gt;&gt;&lt;&lt;if $librarianSpecial is true&gt;&gt;librarian Special &lt;&lt;/if&gt;&gt;&lt;&lt;if $firefighterAttack is true&gt;&gt;firefighter Attack &lt;&lt;/if&gt;&gt;&lt;&lt;if $firefighterDefend is true&gt;&gt;firefighter Defend &lt;&lt;/if&gt;&gt;&lt;&lt;if $firefighterSpecial is true&gt;&gt;firefighter Special &lt;&lt;/if&gt;&gt;&lt;&lt;if $clownAttack is true&gt;&gt;clown Attack &lt;&lt;/if&gt;&gt;&lt;&lt;if $clownDefend is true&gt;&gt;clown Defend &lt;&lt;/if&gt;&gt;&lt;&lt;if $clownSpecial is true&gt;&gt;clown Special &lt;&lt;/if&gt;&gt;&lt;&lt;if $salespersonAttack is true&gt;&gt;salesperson Attack &lt;&lt;/if&gt;&gt;&lt;&lt;if $salespersonDefend is true&gt;&gt;salesperson Defend &lt;&lt;/if&gt;&gt;&lt;&lt;if $salespersonSpecial is true&gt;&gt;salesperson Special &lt;&lt;/if&gt;&gt;
 
 Enemy Action: &lt;&lt;if $initative is 0&gt;&gt;&lt;&lt;click &quot;Enemy Attack&quot;&gt;&gt;
 /% modify your variables %/
 &lt;&lt;set $initative++&gt;&gt;
 &lt;&lt;set $pastRound1 to true&gt;&gt;
+
+/% Setting move booleans %/
+&lt;&lt;set $cookAttack to false&gt;&gt;&lt;&lt;set $cookDefend to false&gt;&gt;&lt;&lt;set $cookSpecial to false&gt;&gt;&lt;&lt;set $gardenerAttack to false&gt;&gt;&lt;&lt;set $gardenerDefend to false&gt;&gt;&lt;&lt;set $gardenerSpecial to false&gt;&gt;&lt;&lt;set $lifeguardAttack to false&gt;&gt;&lt;&lt;set $lifeguardDefend to false&gt;&gt;&lt;&lt;set $lifeguardSpecial to false&gt;&gt;&lt;&lt;set $photographerAttack to false&gt;&gt;&lt;&lt;set $photographerDefend to false&gt;&gt;&lt;&lt;set $photographerSpecial to false&gt;&gt;&lt;&lt;set $librarianAttack to false&gt;&gt;&lt;&lt;set $librarianDefend to false&gt;&gt;&lt;&lt;set $librarianSpecial to false&gt;&gt;&lt;&lt;set $firefighterAttack to false&gt;&gt;&lt;&lt;set $firefighterDefend to false&gt;&gt;&lt;&lt;set $firefighterSpecial to false&gt;&gt;&lt;&lt;set $clownAttack to false&gt;&gt;&lt;&lt;set $clownDefend to false&gt;&gt;&lt;&lt;set $clownSpecial to false&gt;&gt;&lt;&lt;set $salespersonAttack to false&gt;&gt;&lt;&lt;set $salespersonDefend to false&gt;&gt;&lt;&lt;set $salespersonSpecial to false&gt;&gt;
 
 /% redisplay the currently active passage %/
 &lt;&lt;script&gt;&gt;state.display(state.active.title, null, &quot;back&quot;)&lt;&lt;/script&gt;&gt;
