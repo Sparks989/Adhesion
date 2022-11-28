@@ -111,7 +111,7 @@ The eight of you are in different states of conciousness as the sun begins to pe
 [[Time to choose who will be in your party.|Party Select]] 
 /% Random Variables%/
 &lt;&lt;set $numPartyMembers to 0&gt;&gt;&lt;&lt;set $cookOnTeam to false&gt;&gt;&lt;&lt;set $gardenerOnTeam to false&gt;&gt;&lt;&lt;set $lifeGuardOnTeam to false&gt;&gt;&lt;&lt;set $photographerOnTeam to false&gt;&gt;&lt;&lt;set $librarianOnTeam to false&gt;&gt;&lt;&lt;set $firefighterOnTeam to false&gt;&gt;&lt;&lt;set $clownOnTeam to false&gt;&gt;&lt;&lt;set $salespersonOnTeam to false&gt;&gt;&lt;&lt;set $introFinished to false&gt;&gt;
-&lt;&lt;set $currentTime to 0&gt;&gt;
+&lt;&lt;set $currentTime to 0&gt;&gt;&lt;&lt;set $currentBatteries to 30&gt;&gt;
 /% Setting Health%/
 &lt;&lt;set $cookHealth to 6&gt;&gt;&lt;&lt;set $gardenerHealth to 6&gt;&gt;&lt;&lt;set $lifeguardHealth to 6&gt;&gt;&lt;&lt;set $photographerHealth to 6&gt;&gt;&lt;&lt;set $librarianHealth to 6&gt;&gt;&lt;&lt;set $firefighterHealth to 6&gt;&gt;&lt;&lt;set $clownHealth to 6&gt;&gt;&lt;&lt;set $salespersonHealth to 6&gt;&gt; 
 /% Setting Status %/
@@ -464,14 +464,14 @@ Defend: &lt;&lt;if $initative is not 0&gt;&gt;&lt;&lt;if $cookOnTeam is true&gt;
 
 &lt;&lt;/click&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $gardenerOnTeam is true&gt;&gt;&lt;&lt;click &quot;| Natural Remedy |&quot;&gt;&gt;
 /% modify your variables %/
-&lt;&lt;if $cookOnTeam is true&gt;&gt;&lt;&lt;set $cookStatus to 0&gt;&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;if $gardenerOnTeam is true&gt;&gt;&lt;&lt;set $gardenerStatus to 0&gt;&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;if $lifeGuardOnTeam is true&gt;&gt;&lt;&lt;set $lifeguardStatus to 0&gt;&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;if $photographerOnTeam is true&gt;&gt;&lt;&lt;set $photographerStatus to 0&gt;&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;if $librarianOnTeam is true&gt;&gt;&lt;&lt;set $librarianStatus to 0&gt;&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;if $firefighterOnTeam is true&gt;&gt;&lt;&lt;set $firefighterStatus to 0&gt;&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;if $clownOnTeam is true&gt;&gt;&lt;&lt;set $clownStatus to 0&gt;&gt;&lt;&lt;/if&gt;&gt;
-&lt;&lt;if $salespersonOnTeam is true&gt;&gt;&lt;&lt;set $salespersonStatus to 0&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $cookOnTeam is true&gt;&gt;&lt;&lt;if $currentTarget is 1&gt;&gt;&lt;&lt;set $cookStatus to 0&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $gardenerOnTeam is true&gt;&gt;&lt;&lt;if $currentTarget is 2&gt;&gt;&lt;&lt;set $gardenerStatus to 0&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $lifeGuardOnTeam is true&gt;&gt;&lt;&lt;if $currentTarget is 3&gt;&gt;&lt;&lt;set $lifeguardStatus to 0&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $photographerOnTeam is true&gt;&gt;&lt;&lt;if $currentTarget is 4&gt;&gt;&lt;&lt;set $photographerStatus to 0&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $librarianOnTeam is true&gt;&gt;&lt;&lt;if $currentTarget is 5&gt;&gt;&lt;&lt;set $librarianStatus to 0&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $firefighterOnTeam is true&gt;&gt;&lt;&lt;if $currentTarget is 6&gt;&gt;&lt;&lt;set $firefighterStatus to 0&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $clownOnTeam is true&gt;&gt;&lt;&lt;if $currentTarget is 7&gt;&gt;&lt;&lt;set $clownStatus to 0&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
+&lt;&lt;if $salespersonOnTeam is true&gt;&gt;&lt;&lt;if $currentTarget is 8&gt;&gt;&lt;&lt;set $salespersonStatus to 0&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;/if&gt;&gt;
 &lt;&lt;set $initative++&gt;&gt;
 &lt;&lt;if $initative is 5&gt;&gt;
 &lt;&lt;set $initative to 0&gt;&gt;
@@ -485,7 +485,7 @@ Defend: &lt;&lt;if $initative is not 0&gt;&gt;&lt;&lt;if $cookOnTeam is true&gt;
 
 &lt;&lt;/click&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $lifeGuardOnTeam is true&gt;&gt;&lt;&lt;click &quot;| No Running |&quot;&gt;&gt;
 /% modify your variables %/
-&lt;&lt;set $enemyHealth--&gt;&gt;
+&lt;&lt;set $enemyHealth to $enemyHealth - 2&gt;&gt;
 &lt;&lt;set $initative++&gt;&gt;
 &lt;&lt;if $initative is 5&gt;&gt;
 &lt;&lt;set $initative to 0&gt;&gt;
@@ -499,7 +499,7 @@ Defend: &lt;&lt;if $initative is not 0&gt;&gt;&lt;&lt;if $cookOnTeam is true&gt;
 
 &lt;&lt;/click&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $photographerOnTeam is true&gt;&gt;&lt;&lt;click &quot;| Blackmail |&quot;&gt;&gt;
 /% modify your variables %/
-&lt;&lt;set $enemyHealth--&gt;&gt;
+&lt;&lt;set $currentBatteries to $currentBatteries + 5&gt;&gt;
 &lt;&lt;set $initative++&gt;&gt;
 &lt;&lt;if $initative is 5&gt;&gt;
 &lt;&lt;set $initative to 0&gt;&gt;
@@ -513,7 +513,6 @@ Defend: &lt;&lt;if $initative is not 0&gt;&gt;&lt;&lt;if $cookOnTeam is true&gt;
 
 &lt;&lt;/click&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $librarianOnTeam is true&gt;&gt;&lt;&lt;click &quot;| Analysis |&quot;&gt;&gt;
 /% modify your variables %/
-&lt;&lt;set $enemyHealth--&gt;&gt;
 &lt;&lt;set $initative++&gt;&gt;
 &lt;&lt;if $initative is 5&gt;&gt;
 &lt;&lt;set $initative to 0&gt;&gt;
@@ -555,7 +554,7 @@ Defend: &lt;&lt;if $initative is not 0&gt;&gt;&lt;&lt;if $cookOnTeam is true&gt;
 
 &lt;&lt;/click&gt;&gt;&lt;&lt;/if&gt;&gt;&lt;&lt;if $salespersonOnTeam is true&gt;&gt;&lt;&lt;click &quot;| Extorsion |&quot;&gt;&gt;
 /% modify your variables %/
-&lt;&lt;set $enemyHealth--&gt;&gt;
+&lt;&lt;set $currentBatteries to $currentBatteries + 10&gt;&gt;
 &lt;&lt;set $initative++&gt;&gt;
 &lt;&lt;if $initative is 5&gt;&gt;
 &lt;&lt;set $initative to 0&gt;&gt;
@@ -769,11 +768,11 @@ Cures 1 party member of their status ailment.
 [[Back|Pause]]</tw-passagedata><tw-passagedata pid="62" name="No Running" tags="" position="1650,125" size="100,100">No Running -
 The most powerful authority within a certain environment.
 
-Does something not sure yet.
+Deals 2 damage to an enemy.
 [[Back|Pause]]</tw-passagedata><tw-passagedata pid="63" name="Blackmail" tags="" position="1650,100" size="100,100">Blackmail -
 Every good photographer has a photo that someone doesn&#39;t want people to see.
 
-Does something
+Steals 5 batteries from an enemy.
 [[Back|Pause]]</tw-passagedata><tw-passagedata pid="64" name="Analysis" tags="" position="1650,75" size="100,100">Analysis -
 Know thy enemy and all that stuff. It probably helps right?
 
